@@ -16,7 +16,14 @@ const __dirname = dirname(__filename);
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
-mongoose.connect(process.env.MONGODB_SERVER + "CookieAPP");
+const connect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_SERVER + "CookieAPP");
+  } catch (err) {
+    console.log(err);
+  }
+};
+connect();
 
 app.engine(".hbs", engine({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
