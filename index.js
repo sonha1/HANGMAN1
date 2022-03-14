@@ -72,7 +72,7 @@ app.post("/register", (req, res) => {
                 res.status(err.status).redirect("/register");
             }
             passport.authenticate("local")(req, res, function() {
-                res.redirect("/login");
+                res.status(200).redirect("/login");
             });
         }
     );
